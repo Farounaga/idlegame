@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IDLE DAO Prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="card">
+        <h1>IDLE DAO — Minimal Prototype</h1>
+        <p>Auto-combat + cultivation progression with a parameter-heavy character system.</p>
+      </header>
+
+      <section class="card">
+        <div class="card-title-row">
+          <h2>Cultivator Overview</h2>
+          <button id="breakthrough" class="btn btn-warn">Breakthrough</button>
+        </div>
+
+        <div class="stats-grid">
+          <p>Level <strong id="level">1</strong></p>
+          <p>XP <strong id="xp">0</strong>/<strong id="xp-needed">10</strong></p>
+          <p>HP <strong id="player-hp">0</strong>/<strong id="player-hp-max">0</strong></p>
+          <p>Spirit Stones <strong id="currency">0</strong></p>
+          <p>Dao Insight <strong id="dao-insight">0</strong></p>
+          <p>Unspent Points <strong id="stat-points">0</strong></p>
+          <p>Damage <strong id="player-damage">0</strong></p>
+          <p>Crit Chance <strong id="crit-chance">0%</strong></p>
+          <p>Evasion <strong id="evasion">0%</strong></p>
+          <p>Attack Interval <strong id="attack-interval">0ms</strong></p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Attributes</h2>
+        <p class="hint">Core: Strength, Vitality, Agility, Dexterity. Extra: Spirit, Willpower, Luck.</p>
+
+        <div class="attribute-list" id="attribute-list"></div>
+      </section>
+
+      <section class="card">
+        <h2>Upgrades</h2>
+        <div class="actions">
+          <button id="upgrade-damage" class="btn">Upgrade Technique (+1 base damage) — 12</button>
+          <button id="upgrade-health" class="btn">Temper Body (+8 base HP) — 10</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Enemy</h2>
+        <p><strong id="enemy-name">-</strong> (Level <strong id="enemy-level">1</strong>)</p>
+        <p>HP <strong id="enemy-hp">0</strong>/<strong id="enemy-hp-max">0</strong></p>
+        <p>Reward <strong id="enemy-reward">0</strong> Spirit Stones</p>
+        <div class="bar"><span id="enemy-bar"></span></div>
+      </section>
+
+      <section class="card">
+        <h2>Event Log</h2>
+        <ul id="event-log"></ul>
+      </section>
+    </main>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
