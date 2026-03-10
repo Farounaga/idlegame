@@ -7,13 +7,12 @@
   --primary: #87a3ff;
   --warn: #f6c56d;
   --danger: #ef6b73;
+  --ok: #5ad49b;
   color-scheme: dark;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -22,7 +21,7 @@ body {
 }
 
 .container {
-  width: min(980px, 100% - 24px);
+  width: min(1200px, 100% - 24px);
   margin: 18px auto 24px;
   display: grid;
   gap: 12px;
@@ -35,29 +34,89 @@ body {
   background: color-mix(in oklab, var(--bg-soft), black 12%);
 }
 
-h1, h2, p {
-  margin: 0;
-}
-
-h1 {
-  font-size: 1.25rem;
-  margin-bottom: 6px;
-}
-
-h2 {
-  font-size: 1rem;
-  margin-bottom: 8px;
-}
-
+h1, h2, h3, p { margin: 0; }
+h1 { font-size: 1.2rem; margin-bottom: 6px; }
+h2 { font-size: 1rem; margin-bottom: 8px; }
+h3 { font-size: 0.95rem; margin: 12px 0 8px; }
 p { color: var(--muted); }
 strong { color: var(--fg); }
 
-.card-title-row {
+.battle-layout {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  align-items: start;
+}
+
+.fighter {
+  min-height: 520px;
+}
+
+.center-panel {
+  min-height: 520px;
+}
+
+.sprite-wrap {
+  margin: 8px 0 12px;
+  height: 130px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #121722;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sprite {
+  width: 86px;
+  height: 86px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  transition: transform 120ms ease;
+}
+
+.player-sprite {
+  background: linear-gradient(145deg, #8cb2ff, #5876d9);
+  color: #0d1530;
+}
+
+.enemy-sprite {
+  background: linear-gradient(145deg, #ff9ba3, #d15967);
+  color: #2d0f14;
+}
+
+.sprite.attack-player {
+  animation: attack-left 180ms ease;
+}
+
+.sprite.attack-enemy {
+  animation: attack-right 180ms ease;
+}
+
+@keyframes attack-left {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(16px) scale(1.04); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes attack-right {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-16px) scale(1.04); }
+  100% { transform: translateX(0); }
+}
+
+.hit-flash {
+  animation: flash-hit 180ms ease;
+}
+
+@keyframes flash-hit {
+  0% { box-shadow: 0 0 0 0 rgba(255, 120, 120, 0); }
+  35% { box-shadow: 0 0 0 999px rgba(255, 120, 120, 0.08) inset; }
+  100% { box-shadow: 0 0 0 0 rgba(255, 120, 120, 0); }
 }
 
 .stats-grid {
@@ -70,6 +129,7 @@ strong { color: var(--fg); }
 .attribute-list {
   display: grid;
   gap: 8px;
+  margin-top: 10px;
 }
 
 .attribute-item {
@@ -83,9 +143,8 @@ strong { color: var(--fg); }
   background: #121722;
 }
 
-.attribute-controls {
-  display: flex;
-  gap: 6px;
+.hint {
+  color: #8e98ad;
 }
 
 .btn {
@@ -96,16 +155,25 @@ strong { color: var(--fg); }
   color: var(--fg);
   cursor: pointer;
 }
-
 .btn:hover { border-color: var(--primary); }
 .btn-warn { border-color: #7f6530; background: #2b2416; color: #ffe8bf; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-.btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.progress-block {
+  margin-top: 10px;
 }
 
-.hint { margin-bottom: 10px; }
+.top-hp {
+  margin-top: 4px;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
 
 .bar {
   width: 100%;
@@ -119,7 +187,15 @@ strong { color: var(--fg); }
   display: block;
   height: 100%;
   width: 0;
-  background: linear-gradient(90deg, var(--danger), #ff9fa4);
+  background: linear-gradient(90deg, var(--primary), #c9d8ff);
+}
+
+.enemy-bar span {
+  background: linear-gradient(90deg, #f08b96, #ffc0c6);
+}
+
+.hp-bar span {
+  background: linear-gradient(90deg, var(--ok), #9ef5cc);
 }
 
 #event-log {
@@ -127,4 +203,14 @@ strong { color: var(--fg); }
   padding-left: 18px;
   max-height: 220px;
   overflow: auto;
+}
+
+@media (max-width: 1020px) {
+  .battle-layout {
+    grid-template-columns: 1fr;
+  }
+  .fighter,
+  .center-panel {
+    min-height: 0;
+  }
 }
