@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IDLE DAO Prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="card">
+        <h1>IDLE DAO — Combat Arena Prototype</h1>
+        <p>Left: your cultivator. Right: enemy. Center: progression, upgrades, and attributes.</p>
+      </header>
+
+      <section class="battle-layout">
+        <article class="card fighter" id="player-fighter">
+          <h2>Your Cultivator</h2>
+          <div class="progress-block top-hp">
+            <div class="progress-label"><span>Your HP</span><span id="player-hp-label">0%</span></div>
+            <div class="bar hp-bar"><span id="player-hp-bar"></span></div>
+          </div>
+          <div class="sprite-wrap">
+            <div class="sprite player-sprite" id="player-sprite">YOU</div>
+          </div>
+          <p>Level <strong id="level">1</strong></p>
+          <p>HP <strong id="player-hp">0</strong>/<strong id="player-hp-max">0</strong></p>
+          <p>Damage <strong id="player-damage">0</strong></p>
+          <p>Crit <strong id="crit-chance">0%</strong></p>
+          <p>Evasion <strong id="evasion">0%</strong></p>
+          <div class="progress-block">
+            <div class="progress-label"><span>Your Attack Charge</span><span id="player-cooldown-label">0%</span></div>
+            <div class="bar"><span id="player-cooldown-bar"></span></div>
+          </div>
+        </article>
+
+        <article class="card center-panel">
+          <h2>Progression & Upgrades</h2>
+          <div class="stats-grid">
+            <p>XP <strong id="xp">0</strong>/<strong id="xp-needed">10</strong></p>
+            <p>Spirit Stones <strong id="currency">0</strong></p>
+            <p>Dao Insight <strong id="dao-insight">0</strong></p>
+            <p>Unspent Points <strong id="stat-points">0</strong></p>
+          </div>
+
+          <div class="actions">
+            <button id="upgrade-damage" class="btn">Upgrade Technique (+1 base damage) — 12</button>
+            <button id="upgrade-health" class="btn">Temper Body (+8 base HP) — 10</button>
+            <button id="breakthrough" class="btn btn-warn">Breakthrough (level 7+)</button>
+          </div>
+
+          <h3>Attributes</h3>
+          <p class="hint">Strength, Vitality, Agility, Dexterity + Spirit, Willpower, Luck</p>
+          <div class="attribute-list" id="attribute-list"></div>
+        </article>
+
+        <article class="card fighter enemy" id="enemy-fighter">
+          <h2>Enemy</h2>
+          <div class="progress-block top-hp">
+            <div class="progress-label"><span>Enemy HP</span><span id="enemy-hp-label">0%</span></div>
+            <div class="bar hp-bar"><span id="enemy-hp-bar"></span></div>
+          </div>
+          <div class="sprite-wrap">
+            <div class="sprite enemy-sprite" id="enemy-sprite">ENEMY</div>
+          </div>
+          <p><strong id="enemy-name">-</strong> (Level <strong id="enemy-level">1</strong>)</p>
+          <p>HP <strong id="enemy-hp">0</strong>/<strong id="enemy-hp-max">0</strong></p>
+          <p>Reward <strong id="enemy-reward">0</strong> Spirit Stones</p>
+          <div class="progress-block">
+            <div class="progress-label"><span>Enemy Attack Charge</span><span id="enemy-cooldown-label">0%</span></div>
+            <div class="bar enemy-bar"><span id="enemy-cooldown-bar"></span></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>Event Log</h2>
+        <ul id="event-log"></ul>
+      </section>
+    </main>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
