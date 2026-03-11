@@ -69,7 +69,7 @@ const el = {
   enemyHp: document.getElementById('enemy-hp'),
   enemyHpMax: document.getElementById('enemy-hp-max'),
   enemyReward: document.getElementById('enemy-reward'),
-  enemyHpBar: document.getElementById('enemy-hp-bar'),
+  enemyHpBar: document.getElementById('enemy-hp-bar') || document.getElementById('enemy-bar'),
   enemyHpLabel: document.getElementById('enemy-hp-label'),
   playerHpBar: document.getElementById('player-hp-bar'),
   playerHpLabel: document.getElementById('player-hp-label'),
@@ -304,6 +304,10 @@ function renderAttributes() {
 
 function render() {
   recalcDerivedStats();
+
+  if (!el.enemyHpBar || !el.playerHpBar || !el.playerCooldownBar || !el.enemyCooldownBar) {
+    return;
+  }
 
   el.level.textContent = state.level;
   el.xp.textContent = state.xp;
