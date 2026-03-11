@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IDLE DAO Prototype</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="preload" href="styles.css" as="style" />
+    <link rel="stylesheet" href="styles.css" onload="document.documentElement.classList.add('styles-ready')" />
+    <style>body{visibility:hidden}.styles-ready body{visibility:visible}</style>
   </head>
   <body>
     <main class="container">
@@ -28,6 +30,7 @@
           <p>Damage <strong id="player-damage">0</strong></p>
           <p>Crit <strong id="crit-chance">0%</strong></p>
           <p>Evasion <strong id="evasion">0%</strong></p>
+          <p>Attack Interval <strong id="attack-interval">0ms</strong></p>
           <div class="progress-block">
             <div class="progress-label"><span>Your Attack Charge</span><span id="player-cooldown-label">0%</span></div>
             <div class="bar"><span id="player-cooldown-bar"></span></div>

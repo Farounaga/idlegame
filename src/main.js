@@ -60,6 +60,7 @@ const el = {
   dmg: document.getElementById('player-damage'),
   critChance: document.getElementById('crit-chance'),
   evasion: document.getElementById('evasion'),
+  attackInterval: document.getElementById('attack-interval'),
   statPoints: document.getElementById('stat-points'),
   currency: document.getElementById('currency'),
   daoInsight: document.getElementById('dao-insight'),
@@ -312,6 +313,7 @@ function render() {
   el.dmg.textContent = state.player.damage;
   el.critChance.textContent = `${state.player.critChance.toFixed(1)}%`;
   el.evasion.textContent = `${state.player.evasion.toFixed(1)}%`;
+  el.attackInterval.textContent = `${Math.round(state.player.attackIntervalMs)}ms`;
   el.statPoints.textContent = state.statPoints;
   el.currency.textContent = state.currency;
   el.daoInsight.textContent = state.daoInsight;
